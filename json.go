@@ -5,8 +5,8 @@ import (
 	"net/http/httptest"
 	"testing"
 
+	"github.com/antlinker/ginsrvmock/internal/json"
 	"github.com/stretchr/testify/assert"
-	"gogs.xiaoyuanjijiehao.com/tes/tesserver/internal/json"
 )
 
 // JSONAssert json断言器

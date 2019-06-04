@@ -6,11 +6,10 @@ import (
 	"net/http/httptest"
 	"testing"
 
-	"gogs.xiaoyuanjijiehao.com/tes/tesserver/internal/json"
+	"github.com/antlinker/ginsrvmock/internal/json"
 
 	"github.com/gin-gonic/gin"
 	"github.com/stretchr/testify/assert"
-	"gogs.xiaoyuanjijiehao.com/tes/tesserver/internal/web/ginsrv"
 )
 
 // GinMock gin mock接口
@@ -27,7 +26,7 @@ type GinMock interface {
 }
 
 // New 创建gin服务mock
-func New(handler func(route *ginsrv.Engine)) GinMock {
+func New(handler func(route *gin.Engine)) GinMock {
 	r := gin.Default()
 	if handler != nil {
 		handler(r)
@@ -38,7 +37,7 @@ func New(handler func(route *ginsrv.Engine)) GinMock {
 }
 
 type ginMock struct {
-	route *ginsrv.Engine
+	route *gin.Engine
 	t     *testing.T
 	head  http.Header
 }
