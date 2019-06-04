@@ -98,9 +98,9 @@ func Test_Common_Demo(t *testing.T) {
 
 ```
 
-## 试用范围
+## 适用范围
 
-目前试用于gin服务，仅支持请求body是json格式，响应body也是json格式的请求.
+目前适用于gin服务，仅支持请求body是json格式，响应body也是json格式的请求.
 
 支持　get post put delete 请求测试
 
@@ -110,7 +110,8 @@ func Test_Common_Demo(t *testing.T) {
 
 支持头信息的断言，头信息断言目前仅支持对想要断言的头信息进行完全匹配。
 
-## 计划支持
+## 支持计划
 
 1. 支持`application/x-www-form-urlencoded`格式
 1. 支持`multipart/form-data`格式
+1. 支持更复杂的断言模式，例如，可以部分匹配，目前主要是完全匹配
