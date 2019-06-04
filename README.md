@@ -12,11 +12,9 @@ go get -u -v github.com/antlinker/ginsrvmock
 
 ### 矩阵测试
 
-[exmple源码](exmple/common_test.go)
+[exmple源码](exmple/matrix_test.go)
 
 ``` golang
-package server
-
 import (
 	"fmt"
 	"testing"
@@ -25,7 +23,7 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-func Test_Demo(t *testing.T) {
+func Test_Matrix_Demo(t *testing.T) {
 	ginsrvmock.New(func(route *gin.Engine) {
 		route.GET("/demo/:id", func(ctx *gin.Context) {
 			id := ctx.Param("id")
@@ -43,7 +41,7 @@ func Test_Demo(t *testing.T) {
 
 		})
 
-	}).Bind(t).Matrix().Test([]ginsrvmock.MatrixTestArg{
+	}).Bind(t).Matrix().GetTest([]ginsrvmock.MatrixTestArg{
 		ginsrvmock.NewGetArg("true 1", "/demo/world", 200, map[string]interface{}{
 			"status":  0,
 			"message": "hello world",
@@ -61,8 +59,6 @@ func Test_Demo(t *testing.T) {
 [exmple源码](exmple/common_test.go)
 
 ```golang
-package server
-
 import (
 	"fmt"
 	"testing"
@@ -70,7 +66,9 @@ import (
 	"github.com/antlinker/ginsrvmock"
 	"github.com/gin-gonic/gin"
 )
-ginmock := ginsrvmock.New(func(route *gin.Engine) {
+
+func Test_Common_Demo(t *testing.T) {
+	ginmock := ginsrvmock.New(func(route *gin.Engine) {
 		route.GET("/demo/:id", func(ctx *gin.Context) {
 			id := ctx.Param("id")
 			if id == "world" {
@@ -95,7 +93,9 @@ ginmock := ginsrvmock.New(func(route *gin.Engine) {
 	ginmock.Get("/demo/1").JSON().Assert(500, map[string]interface{}{
 		"status":  1,
 		"message": "error 1",
-    })
+	})
+}
+
 ```
 
 ## 试用范围
