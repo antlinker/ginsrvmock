@@ -12,7 +12,7 @@ go get -u -v github.com/antlinker/ginsrvmock
 
 ### 矩阵测试
 
-[exmple](exmple/common_test.go)
+[exmple源码](exmple/common_test.go)
 
 ``` golang
 package server
@@ -58,10 +58,18 @@ func Test_Demo(t *testing.T) {
 ```
 ### 通用测试
 
-[exmple](exmple/common_test.go)
+[exmple源码](exmple/common_test.go)
 
 ```golang
+package server
 
+import (
+	"fmt"
+	"testing"
+
+	"github.com/antlinker/ginsrvmock"
+	"github.com/gin-gonic/gin"
+)
 ginmock := ginsrvmock.New(func(route *gin.Engine) {
 		route.GET("/demo/:id", func(ctx *gin.Context) {
 			id := ctx.Param("id")
